@@ -1,0 +1,45 @@
+name: Export Secrets to CSV
+description: 'Export secrets to CSV file.'
+inputs:
+  repository:
+    description: 'The repository name.'
+    required: false
+    default: ${{ github.repository }}
+  secrets-prefix:
+    required: true
+    description: ''
+  secrets-type:
+    required: false
+    default: 'org'
+    description: 'Allowed values: org, repo, env'
+  environment-name:
+    required: false
+    default: ''
+    description: 'Environment name. Required for secrets-type=env'
+runs:
+  using: composite
+  steps:
+    - name: Parse Repository Name
+      id: parse-repository-name
+      shell: pwsh
+      run: >
+        ${{ github.action_path }}/scripts/parse-repository-name.ps1
+        ${{ inputs.repository }}
+    
+    - shell: pwsh
+      name: Export secrets from environment variables with prefix '${{ inputs.secrets-prefix }}'
+      run: >
+        ${{ github.action_path }}/scripts/export-secrets-from-env.ps1
+        ${{ inputs.repository }}
+        ${{ runner.temp }}/secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}.csv
+        ${{ inputs.secrets-prefix }}
+        ${{ inputs.environment-name }}
+        ${{ inputs.secrets-type }}}
+
+    - uses: actions/upload-artifact@v3.1.2
+      name: Upload secrets file
+      with:
+        name: ${{ inputs.artifact-name }}
+        if-no-files-found: error
+        retention-days: 1
+        path: ${{ runner.temp }}/secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}.csv
