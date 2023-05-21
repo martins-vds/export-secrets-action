@@ -11,7 +11,9 @@ This GitHub Action exports secrets to a CSV file.
 
 ## Usage
 
-Create a workflow (eg: `.github/workflows/export-secrets.yml` see [Creating a Workflow file](https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file)) in any repository that you would like to export secrets from following the examples below. The workflow will export the secrets to a CSV file and upload it as an artifact.
+Create a workflow (eg: `.github/workflows/export-secrets.yml` see [Creating a Workflow file](https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file)) in any repository that you would like to export secrets from following the examples below. Add the secrets you would like to export as environment variables in the workflow file as shown in the examples below.
+
+The workflow will export the secrets to a CSV file and upload it as an artifact.
 
 ### Example 1: Export Organization Secrets
 
