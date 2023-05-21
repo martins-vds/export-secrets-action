@@ -1,5 +1,9 @@
 name: Export Secrets to CSV
+author: martins-vds
 description: 'Export secrets to CSV file.'
+branding:
+  icon: 'download'
+  color: 'green'
 inputs:
   repository:
     description: 'The repository name.'
