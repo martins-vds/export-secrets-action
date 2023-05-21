@@ -22,7 +22,7 @@ The workflow will export the secrets to a CSV file and upload it as an artifact.
 ```yaml
 steps:
   - name: Export Secrets to CSV (org)
-    uses: martins-vds/export-secrets-action@v1.0
+    uses: martins-vds/export-secrets-action@v1
     env:
       SECRETS_ORG_SECRET1: ${{ secrets.ORG_SECRET1 }}
       SECRETS_ORG_SECRET2: ${{ secrets.ORG_SECRET2 }}
@@ -37,7 +37,7 @@ steps:
 ```yaml
 steps:
   - name: Export Secrets to CSV (repo)
-    uses: martins-vds/export-secrets-action@v1.0
+    uses: martins-vds/export-secrets-action@v1
     env:
       SECRETS_REPO_SECRET1: ${{ secrets.REPO_SECRET1 }}
       SECRETS_REPO_SECRET2: ${{ secrets.REPO_SECRET2 }}    
@@ -52,7 +52,7 @@ steps:
 ```yaml
 steps:
   - name: Export Secrets to CSV (env)
-    uses: martins-vds/export-secrets-action@v1.0
+    uses: martins-vds/export-secrets-action@v1
     environment: 'env-name'
     env:
       SECRETS_ENVIRONMENT_SECRET1: ${{ secrets.ENVIRONMENT_SECRET1 }}
@@ -81,7 +81,7 @@ jobs:
         runs-on: windows-latest  
         steps:
           - name: Export Secrets to CSV (org)
-            uses: martins-vds/export-secrets-action@v1.0
+            uses: martins-vds/export-secrets-action@v1
             env:
                 '${{ env.PREFIX_SECRETS }}ORG_SECRET1': ${{ secrets.ORG_SECRET1 }}
                 '${{ env.PREFIX_SECRETS }}ORG_SECRET2': ${{ secrets.ORG_SECRET2 }}
@@ -90,7 +90,7 @@ jobs:
                 secrets-prefix: ${{ env.PREFIX_SECRETS }}
                 secrets-type: 'org'
           - name: Export Secrets to CSV (repo)
-            uses: martins-vds/export-secrets-action@v1.0
+            uses: martins-vds/export-secrets-action@v1
             env:
                 '${{ env.PREFIX_SECRETS }}REPO_SECRET1': ${{ secrets.REPO_SECRET1 }}
                 '${{ env.PREFIX_SECRETS }}REPO_SECRET2': ${{ secrets.REPO_SECRET2 }}    
@@ -99,7 +99,7 @@ jobs:
                 secrets-prefix: ${{ env.PREFIX_SECRETS }}
                 secrets-type: 'repo'
           - name: Export Secrets to CSV (env)
-            uses: martins-vds/export-secrets-action@v1.0
+            uses: martins-vds/export-secrets-action@v1
             environment: 'env-name'
             env:
                 '${{ env.PREFIX_SECRETS }}ENVIRONMENT_SECRET1': ${{ secrets.ENVIRONMENT_SECRET1 }}
