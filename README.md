@@ -2,6 +2,12 @@
 
 This GitHub Action exports secrets to a CSV file.
 
+## Disclaimer
+
+This action is not officially supported by GitHub. It is a personal project that I created to help me export secrets from GitHub to a CSV file which contains possibly sensitive information. Make sure to store the CSV file in a secure location and delete it when no longer needed. 
+
+*Use this action at your own risk.*
+
 ## Inputs
 
 - `secrets-prefix` (required): The prefix for the secrets ending with an underscore. For example, `SECRETS_`.
