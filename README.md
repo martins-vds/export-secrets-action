@@ -32,7 +32,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Export Secrets to CSV (org)
-        uses: martins-vds/export-secrets-action@v1.2
+        uses: martins-vds/export-secrets-action@v1
         env:
           SECRETS_ORG_SECRET1: ${{ secrets.ORG_SECRET1 }}
           SECRETS_ORG_SECRET2: ${{ secrets.ORG_SECRET2 }}
@@ -51,7 +51,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Export Secrets to CSV (repo)
-        uses: martins-vds/export-secrets-action@v1.2
+        uses: martins-vds/export-secrets-action@v1
         env:
           SECRETS_REPO_SECRET1: ${{ secrets.REPO_SECRET1 }}
           SECRETS_REPO_SECRET2: ${{ secrets.REPO_SECRET2 }}    
@@ -71,7 +71,7 @@ jobs:
       environment: 'production'
       steps:
         - name: Export Secrets to CSV (env)
-          uses: martins-vds/export-secrets-action@v1.2    
+          uses: martins-vds/export-secrets-action@v1    
           env:
             SECRETS_ENVIRONMENT_SECRET1: ${{ secrets.ENVIRONMENT_SECRET1 }}
             SECRETS_ENVIRONMENT_SECRET2: ${{ secrets.ENVIRONMENT_SECRET2 }}
@@ -99,7 +99,7 @@ jobs:
       runs-on: windows-latest
       steps:
         - name: Export Secrets to CSV (org)
-          uses: martins-vds/export-secrets-action@v1.2
+          uses: martins-vds/export-secrets-action@v1
           env:
             SECRETS_ORG_SECRET1: ${{ secrets.ORG_SECRET1 }}
             SECRETS_ORG_SECRET2: ${{ secrets.ORG_SECRET2 }}
@@ -112,7 +112,7 @@ jobs:
       runs-on: windows-latest
       steps:
         - name: Export Secrets to CSV (repo)
-          uses: martins-vds/export-secrets-action@v1.2
+          uses: martins-vds/export-secrets-action@v1
           env:
             SECRETS_REPO_SECRET1: ${{ secrets.REPO_SECRET1 }}
             SECRETS_REPO_SECRET2: ${{ secrets.REPO_SECRET2 }}    
@@ -126,7 +126,7 @@ jobs:
       environment: 'production'
       steps:
         - name: Export Secrets to CSV (env)
-          uses: martins-vds/export-secrets-action@v1.2    
+          uses: martins-vds/export-secrets-action@v1    
           env:
             SECRETS_ENVIRONMENT_SECRET1: ${{ secrets.ENVIRONMENT_SECRET1 }}
             SECRETS_ENVIRONMENT_SECRET2: ${{ secrets.ENVIRONMENT_SECRET2 }}
