@@ -30,12 +30,22 @@ runs:
         ${{ github.action_path }}/scripts/parse-repository-name.ps1
         "${{ inputs.repository }}"
     
+    - name: Generate Artifact Name
+      id: generate-artifact-name
+      shell: pwsh
+      run: >
+        ${{ github.action_path }}/scripts/generate-artifact-name.ps1
+        "${{ steps.parse-repository-name.outputs.owner }}"
+        "${{ steps.parse-repository-name.outputs.repository }}"
+        "${{ inputs.environment-name }}"
+        "${{ inputs.secrets-type }}"
+
     - shell: pwsh
       name: Export secrets from environment variables with prefix '${{ inputs.secrets-prefix }}'
       run: >
         ${{ github.action_path }}/scripts/export-secrets-from-env.ps1
         "${{ inputs.repository }}"
-        "${{ runner.temp }}/secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}.csv"
+        "${{ runner.temp }}/${{ steps.generate-artifact-name.outputs.name }}.csv"
         "${{ inputs.secrets-prefix }}"
         "${{ inputs.environment-name }}"
         "${{ inputs.secrets-type }}"
@@ -43,7 +53,7 @@ runs:
     - uses: actions/upload-artifact@v3.1.2
       name: Upload secrets file
       with:
-        name: secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}
+        name: ${{ steps.generate-artifact-name.outputs.name }}
         if-no-files-found: error
         retention-days: 1
-        path: ${{ runner.temp }}/secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}.csv
+        path: "${{ runner.temp }}/${{ steps.generate-artifact-name.outputs.name }}.csv"
