@@ -38,7 +38,7 @@ runs:
         "${{ runner.temp }}/secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}.csv"
         "${{ inputs.secrets-prefix }}"
         "${{ inputs.environment-name }}"
-        "${{ inputs.secrets-type }}}"
+        "${{ inputs.secrets-type }}"
 
     - uses: actions/upload-artifact@v3.1.2
       name: Upload secrets file
