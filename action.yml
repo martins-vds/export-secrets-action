@@ -43,7 +43,7 @@ runs:
     - uses: actions/upload-artifact@v3.1.2
       name: Upload secrets file
       with:
-        name: ${{ inputs.artifact-name }}
+        name: secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}
         if-no-files-found: error
         retention-days: 1
         path: ${{ runner.temp }}/secrets-${{ steps.parse-repository-name.outputs.owner }}-${{ steps.parse-repository-name.outputs.repository }}.csv
